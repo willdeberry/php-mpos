@@ -19,11 +19,11 @@
                 <p>3. <strong>Configure your miner.</strong></p>
                 <ul>
                 <li>cpuminer-multi <em>(Linux)</em></li>
-                <pre>./cpuminer-multi -a scrypt:1048576 -o stratum+tcp://{$SITESTRATUMURL|default:$smarty.server.SERVER_NAME}:{$SITESTRATUMPORT|default:"3333"} -u <em>Weblogin</em>.<em>WorkerName</em> -p <em>WorkerPassword</em></pre>
+                <pre>./cpuminer-multi -a scrypt:1048576 -o stratum+tcp://{$SITESTRATUMURL|default:$smarty.server.SERVER_NAME}:{$SITESTRATUMPORT|default:"3334"} -O <em>Weblogin</em>.<em>WorkerName</em>:<em>WorkerPassword</em></pre>
                 <br />
                 <p> If you want to mine on a <strong> Windows Operating System</strong>, then you'll need to create a batch file to start your miner. </p><p> Simply open notepad and then copy and paste the following:</p>
                 <li>cpuminer-multi <em>(Windows)</em></li>
-                <pre>cpuminer-multi -a scrypt:1048576 -o stratum+tcp://{$SITESTRATUMURL|default:$smarty.server.SERVER_NAME}:{$SITESTRATUMPORT|default:"3333"} -u <em>Weblogin</em>.<em>WorkerName</em> -p <em>WorkerPassword</em></pre>
+                <pre>cpuminer-multi -a scrypt:1048576 -o stratum+tcp://{$SITESTRATUMURL|default:$smarty.server.SERVER_NAME}:{$SITESTRATUMPORT|default:"3334"} -O <em>Weblogin</em>.<em>WorkerName</em>:<em>WorkerPassword</em></pre>
                 <p> You then need to change "-u Weblogin.Worker -p Worker password" to reflect your own account. Eg, "-u Steve.StevesWorker -p StevesWorkerPassword" then go to "File > Save as" and save the file as "RunMe.bat" in the same folder containing your miners application files. You are now ready to mine, double click on "RunMe.bat" to start mining. If you want, you can create additional workers with usernames and passwords of your choice <a href="{$smarty.server.SCRIPT_NAME}?page=account&action=workers">here</a></p>
                 </ul>
                 <p>4. <strong>Create a {$SITECOINNAME|default:"Litecoin"} address to receive payments.</strong></p>
