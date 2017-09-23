@@ -370,7 +370,7 @@ class User extends Base {
   }
 
   /**
-   * Fetch users donation value 
+   * Fetch users donation value
    * @param userID int UserID
    * @return data string Coin Address
    **/
@@ -877,7 +877,7 @@ class User extends Base {
         $this->setErrorMessage( 'New passwords do not match' );
         return false;
       }
-      if ( strlen($new1) < 8 ) { 
+      if ( strlen($new1) < 8 ) {
         $this->setErrorMessage( 'New password is too short, please use more than 8 chars' );
         return false;
       }
