@@ -3,7 +3,7 @@
           <div class="col-lg-2 col-sm-6">
             <div class="circle-tile fade">
               <div class="circle-tile-heading lightblue">
-                <i class="fa fa-th-large fa-fw fa-2x"></i>
+                <a class="text-link" href="{$GLOBAL.statsurl}" target="_blank"><i class="fa fa-th-large fa-fw fa-2x"></i></a>
               </div>
               <div class="circle-tile-content lightblue">
                 <div class="circle-tile-description text-faded">
@@ -48,7 +48,7 @@
           <div class="col-lg-2 col-sm-6">
             <div class="circle-tile fade">
               <div class="circle-tile-heading lightblue">
-                <i class="fa fa-map-marker fa-fw fa-2x"></i>
+                <a class="text-link" href="{$GLOBAL.statsurl}" target="_blank"><i class="fa fa-map-marker fa-fw fa-2x"></i></a>
               </div>
               <div class="circle-tile-content lightblue">
                 <div class="circle-tile-description text-faded">
@@ -63,7 +63,7 @@
           <div class="col-lg-2 col-sm-6">
             <div class="circle-tile fade">
               <div class="circle-tile-heading lightblue">
-                <i class="fa fa-sitemap fa-fw fa-2x"></i>
+                <a class="text-link" href="{$GLOBAL.statsurl}" target="_blank"><i class="fa fa-sitemap fa-fw fa-2x"></i></a>
               </div>
               <div class="circle-tile-content lightblue">
                 <div class="circle-tile-description text-faded">
