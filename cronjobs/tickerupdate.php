@@ -49,10 +49,21 @@ if ($tickerupdate) {
     $message = 'Failed to fetch price from API: ' . $tools->getCronError();
     $status = 'ERROR';
   }
+  $message = 'Updated latest ' . $config['currency'] . ' price from ' . $config['price']['btcurl'] . ' API';
+  if ($btcprice = $tools->getBtcPrice()) {
+    if (!$setting->setValue('btcprice', $btcprice)) {
+      $message = 'Unable to store new btcprice value: ' . $setting->getCronError();
+      $status = 'ERROR';
+    }
+  } else {
+    $message = 'Failed to fetch btcprice from API: ' . $tools->getCronError();
+    $status = 'ERROR';
+  }
 } else {
   $message = 'Tickerupdate is disabled';
   $status = 'OK';
   $price = 0;
+  $btcprice = 0;
 }
 $log->logInfo(sprintf($strLogMask, 'Price Update', $price, number_format(microtime(true) - $start, 3), $status, $message));
 

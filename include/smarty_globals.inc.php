@@ -51,6 +51,7 @@ $aHashunits = array( '10' => 'H/s', '1' => 'KH/s', '0.001' => 'MH/s', '0.000001'
 
 // Global data for Smarty
 $aGlobal = array(
+  'statsurl' => 'http://veriumstats.vericoin.info/',
   'hashunits' => array( 'pool' => $aHashunits[$dPoolHashrateModifier], 'network' => $aHashunits[$dNetworkHashrateModifier], 'personal' => $aHashunits[$dPersonalHashrateModifier]),
   'hashmods' => array( 'personal' => $dPersonalHashrateModifier ),
   'hashrate' => $iCurrentPoolHashrate,
@@ -62,6 +63,7 @@ $aGlobal = array(
   'confirmations' => $config['confirmations'],
   'reward' => $config['reward_type'] == 'fixed' ? $config['reward'] : $block->getAverageAmount(),
   'price' => $setting->getValue('price'),
+  'btcprice' => $setting->getValue('btcprice'),
   'twofactor' => $config['twofactor'],
   'coinaddresscheck' => $config['check_valid_coinaddress'],
   'csrf' => $config['csrf'],
@@ -94,7 +96,8 @@ $aGlobal = array(
     'price' => $config['price'],
     'targetdiff' => $config['difficulty'],
     'currency' => $config['currency'],
-    'exchangeurl' => $config['price']['url'],
+    'exchangeurl' => $config['price']['url'] . $config['price']['target'],
+    'exchangebtcurl' => $config['price']['btcurl'] . $config['price']['btctarget'],
     'txfee_manual' => $config['txfee_manual'],
     'txfee_auto' => $config['txfee_auto'],
     'payout_system' => $config['payout_system'],
