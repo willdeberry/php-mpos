@@ -77,6 +77,7 @@ require_once(CLASS_DIR . '/statistics.class.php');
 require_once(CLASS_DIR . '/transaction.class.php');
 require_once(CLASS_DIR . '/roundstats.class.php');
 require_once(CLASS_DIR . '/news.class.php');
+require_once(CLASS_DIR . '/whatsnew.class.php');
 require_once(CLASS_DIR . '/api.class.php');
 require_once(CLASS_DIR . '/usersettings.class.php');
 require_once(CLASS_DIR . '/ipushnotification.interface.php');

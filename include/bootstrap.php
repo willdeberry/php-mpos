@@ -1,4 +1,4 @@
-<?php 
+<?php
 $defflip = (!cfip()) ? exit(header('HTTP/1.1 401 Unauthorized')) : 1;
 // Used for performance calculations
 $dStartTime = microtime(true);
@@ -23,6 +23,8 @@ if (!isset($config['db']['shared']['workers']))
 // Check for a shared news database and set to default DB if unset
 if (!isset($config['db']['shared']['news']))
   $config['db']['shared']['news'] = $config['db']['name'];
+if (!isset($config['db']['shared']['whatsnew']))
+  $config['db']['shared']['whatsnew'] = $config['db']['name'];
 
 // load our security configs
 if (!include_once(INCLUDE_DIR . '/config/security.inc.dist.php')) die('Unable to load base security config from ['.INCLUDE_DIR. '/config/security.inc.dist.php' . '] - '.$quickstartlink);

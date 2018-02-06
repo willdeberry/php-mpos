@@ -4,6 +4,9 @@
                     <li>
                         <a href="{$smarty.server.SCRIPT_NAME}"><i class="fa fa-home fa-fw"></i> Home</a>
                     </li>
+                    <li>
+                        <a href="{$smarty.server.SCRIPT_NAME}?page=whatsnew"><i class="fa fa-newspaper-o fa-fw"></i> What's New</a>
+                    </li>
                     {if $smarty.session.AUTHENTICATED|default:"0" == 1}
                     <li>
                         <a href="{$smarty.server.SCRIPT_NAME}?page=dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
@@ -47,6 +50,7 @@
                             <a href="#"><i class="fa fa-info fa-fw"></i> News <span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
                               <li><a href="{$smarty.server.SCRIPT_NAME}?page=admin&action=news"><i class="fa fa-list-alt fa-fw"></i> Site News</a></li>
+                              <li><a href="{$smarty.server.SCRIPT_NAME}?page=admin&action=whatsnew"><i class="fa fa-list-alt fa-fw"></i> What's New</a></li>
                               <li><a href="{$smarty.server.SCRIPT_NAME}?page=admin&action=newsletter"><i class="fa fa-list-alt fa-fw"></i> Newsletter</a></li>
                             </ul>
                           </li>
