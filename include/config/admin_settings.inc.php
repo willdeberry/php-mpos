@@ -218,7 +218,7 @@ $aSettings['statistics'][] = array(
 );
 $aSettings['statistics'][] = array(
   'display' => 'Personal Hashrate Modifier', 'type' => 'select',
-  'options' => array( '10' => 'H/s', '1' => 'KH/s', '0.001' => 'MH/s', '0.000001' => 'GH/s', '0.000000001' => 'TH/s', '0.000000000001' => 'PH/s', '0.000000000000001' => 'EH/s' ),
+  'options' => array( '60000' => 'H/m', '10' => 'H/s', '1' => 'KH/s', '0.001' => 'MH/s', '0.000001' => 'GH/s', '0.000000001' => 'TH/s', '0.000000000001' => 'PH/s', '0.000000000000001' => 'EH/s' ),
   'default' => '10',
   'name' => 'statistics_personal_hashrate_modifier', 'value' => $setting->getValue('statistics_personal_hashrate_modifier'),
   'tooltip' => 'Auto-adjust displayed personal hashrates to a certain limit.'

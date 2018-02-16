@@ -13,7 +13,7 @@
                 <th>Password</th>
                 <th>Active</th>
                 {if $GLOBAL.config.disable_notifications != 1 && $DISABLE_IDLEWORKERNOTIFICATIONS != 1}<th>Monitor</th>{/if}
-                <th>Khash/s</th>
+                <th>Hash/m</th>
                 <th>Difficulty</th>
                 <th style="padding-right: 25px;">Avg Difficulty</th>
               </tr>
@@ -28,7 +28,7 @@
                 {if $GLOBAL.config.disable_notifications != 1 && $DISABLE_IDLEWORKERNOTIFICATIONS != 1}
                 <td align="center"><i class="fa fa-{if $WORKERS[worker].monitor}check{else}times{/if} fa-fw"></i></td>
                 {/if}
-                <td>{$WORKERS[worker].hashrate|number_format:"3"|default:"0"}</td>
+                <td>{$WORKERS[worker].hashrate|number_format:"3"|default:"0" * 60 * 1000}</td>
                 <td>{if $WORKERS[worker].hashrate > 0}{$WORKERS[worker].difficulty|number_format:"2"|default:"0"}{else}0{/if}</td>
                 <td style="padding-right: 25px;">{if $WORKERS[worker].hashrate > 0}{$WORKERS[worker].avg_difficulty|number_format:"2"|default:"0"}{else}0{/if}</td>
               </tr>
