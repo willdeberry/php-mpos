@@ -49,6 +49,17 @@ if ($tickerupdate) {
     $message = 'Failed to fetch price from API: ' . $tools->getCronError();
     $status = 'ERROR';
   }
+  $message = 'Updated latest EUR price from ' . $config['price']['url'] . ' API';
+  $status = 'OK';
+  if ($europrice = $tools->getEuroPrice()) {
+    if (!$setting->setValue('europrice', $europrice)) {
+      $message = 'Unable to store new europrice value: ' . $setting->getCronError();
+      $status = 'ERROR';
+    }
+  } else {
+    $message = 'Failed to fetch price from API: ' . $tools->getCronError();
+    $status = 'ERROR';
+  }
   $message = 'Updated latest ' . $config['currency'] . ' price from ' . $config['price']['btcurl'] . ' API';
   if ($btcprice = $tools->getBtcPrice()) {
     if (!$setting->setValue('btcprice', $btcprice)) {

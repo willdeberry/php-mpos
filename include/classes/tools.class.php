@@ -151,6 +151,33 @@ class Tools extends Base {
   /**
    * Extract price information from API data
    **/
+  public function getEuroPrice() {
+    $aData = $this->getApi($this->config['price']['url'], $this->config['price']['target']);
+    $strCurrency = 'EUR';
+    // Check the API type for configured URL
+    if (!$strApiType = $this->getApiType($this->config['price']['url']))
+      return false;
+    // if api data is valid, extract price depending on API type
+    if (is_array($aData)) {
+      switch ($strApiType) {
+        case 'coinmarketcap':
+          foreach ($aData as $aItem) {
+              return $aItem['price_eur'];
+          }
+          break;
+      }
+    } else {
+      $this->setErrorMessage("Got an invalid response from ticker API");
+      return false;
+    }
+    // Catchall, we have no data extractor for this API url
+    $this->setErrorMessage("Undefined API to getEuroPrice() on URL " . $this->config['price']['url']);
+    return false;
+  }
+
+  /**
+   * Extract price information from API data
+   **/
   public function getBtcPrice() {
     $aData = $this->getApi($this->config['price']['btcurl'], $this->config['price']['btctarget']);
     $strCurrency = $this->config['currency'];

@@ -64,6 +64,7 @@ $aGlobal = array(
   'reward' => $config['reward_type'] == 'fixed' ? $config['reward'] : $block->getAverageAmount(),
   'price' => $setting->getValue('price'),
   'btcprice' => $setting->getValue('btcprice'),
+  'europrice' => $setting->getValue('europrice'),
   'twofactor' => $config['twofactor'],
   'coinaddresscheck' => $config['check_valid_coinaddress'],
   'csrf' => $config['csrf'],
