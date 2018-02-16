@@ -20,7 +20,7 @@
 {if $NEWMINT >= 0}
           <tr>
             <td>Liquid Assets</td>
-            {if $GLOBAL.config.getbalancewithunconfirmed}
+            {if $GLOBAL.config.getadminbalancewithunconfirmed}
             <td>{($BALANCE - $LOCKED - $UNCONFIRMED + $NEWMINT|default:"0")|number_format:"8"}</td>
             {else}
             <td>{($BALANCE - $LOCKED + $NEWMINT|default:"0")|number_format:"8"}</td>
@@ -33,7 +33,7 @@
 {else}
           <tr>
             <td>Liquid Assets</td>
-            {if $GLOBAL.config.getbalancewithunconfirmed}
+            {if $GLOBAL.config.getadminbalancewithunconfirmed}
             <td>{($BALANCE - $LOCKED - $UNCONFIRMED)|number_format:"8"}</td>
             {else}
             <td>{($BALANCE - $LOCKED)|number_format:"8"}</td>
