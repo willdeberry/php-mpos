@@ -101,9 +101,12 @@ $config['gettingstarted']['stratumport'] = '3333';
  *   https://github.com/MPOS/php-mpos/wiki/Config-Setup#wiki-ticker-api
  **/
 $config['price']['enabled'] = false;
-$config['price']['url'] = 'https://btc-e.com';
-$config['price']['target'] = '/api/2/ltc_usd/ticker';
+$config['price']['url'] = 'https://api.coinmarketcap.com';
+$config['price']['target'] = '/v1/ticker/veriumreserve/';
 $config['price']['currency'] = 'USD';
+$config['price']['btcurl'] = 'https://bittrex.com';
+$config['price']['btctarget'] = '/api/v1.1/public/getticker?market=BTC-VRM';
+$config['price']['btccurrency'] = 'BTC';
 
 /**
  * Automatic Payout Thresholds
@@ -207,8 +210,8 @@ $config['purge']['shares'] = 25000;
  *  Share archiving configuration details
  *   https://github.com/MPOS/php-mpos/wiki/Config-Setup#wiki-archiving
  **/
-$config['archive']['maxrounds'] = 10; 
-$config['archive']['maxage'] = 60 * 24; 
+$config['archive']['maxrounds'] = 10;
+$config['archive']['maxage'] = 60 * 24;
 
 
 /**
