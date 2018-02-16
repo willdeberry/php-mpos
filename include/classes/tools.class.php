@@ -228,6 +228,140 @@ class Tools extends Base {
     $this->setErrorMessage("Undefined API to getBtcPrice() on URL " . $this->config['price']['btcurl']);
     return false;
   }
+  /**
+   * Extract price information from API data
+   **/
+  public function getVrcPrice() {
+    $aData = $this->getApi($this->config['price']['url'], $this->config['price']['vrctarget']);
+    $strCurrency = $this->config['currency'];
+    // Check the API type for configured URL
+    if (!$strApiType = $this->getApiType($this->config['price']['url']))
+      return false;
+    // if api data is valid, extract price depending on API type
+    if (is_array($aData)) {
+      switch ($strApiType) {
+        case 'coinchose':
+          foreach ($aData as $aItem) {
+            if($strCurrency == $aItem[0])
+              return $aItem['price'];
+          }
+          break;
+        case 'btce':
+          return $aData['ticker']['last'];
+          break;
+        case 'cryptsy':
+          return @$aData['return']['markets'][$strCurrency]['lasttradeprice'];
+          break;
+        case 'cryptopia':
+          return @$aData['Data']['LastPrice'];
+          break;
+        case 'cryptorush':
+          return @$aData["$strCurrency/" . $this->config['price']['currency']]['last_trade'];
+          break;
+        case 'mintpal':
+          return @$aData['0']['last_price'];
+          break;
+        case 'c-cex':
+          return @$aData['ticker']['lastprice'];
+          break;
+        case 'bittrex':
+          return @$aData['result']['Last'];
+          break;
+        case 'coinmarketcap':
+          foreach ($aData as $aItem) {
+              return $aItem['price_usd'];
+          }
+          break;
+      }
+    } else {
+      $this->setErrorMessage("Got an invalid response from ticker API");
+      return false;
+    }
+    // Catchall, we have no data extractor for this API url
+    $this->setErrorMessage("Undefined API to getVrcPrice() on URL " . $this->config['price']['url']);
+    return false;
+  }
+
+  /**
+   * Extract price information from API data
+   **/
+  public function getVrcEuroPrice() {
+    $aData = $this->getApi($this->config['price']['url'], $this->config['price']['vrctarget']);
+    $strCurrency = 'EUR';
+    // Check the API type for configured URL
+    if (!$strApiType = $this->getApiType($this->config['price']['url']))
+      return false;
+    // if api data is valid, extract price depending on API type
+    if (is_array($aData)) {
+      switch ($strApiType) {
+        case 'coinmarketcap':
+          foreach ($aData as $aItem) {
+              return $aItem['price_eur'];
+          }
+          break;
+      }
+    } else {
+      $this->setErrorMessage("Got an invalid response from ticker API");
+      return false;
+    }
+    // Catchall, we have no data extractor for this API url
+    $this->setErrorMessage("Undefined API to getVrcEuroPrice() on URL " . $this->config['price']['url']);
+    return false;
+  }
+
+  /**
+   * Extract price information from API data
+   **/
+  public function getVrcBtcPrice() {
+    $aData = $this->getApi($this->config['price']['btcurl'], $this->config['price']['vrcbtctarget']);
+    $strCurrency = $this->config['currency'];
+    // Check the API type for configured URL
+    if (!$strApiType = $this->getApiType($this->config['price']['btcurl']))
+      return false;
+    // if api data is valid, extract price depending on API type
+    if (is_array($aData)) {
+      switch ($strApiType) {
+        case 'coinchose':
+          foreach ($aData as $aItem) {
+            if($strCurrency == $aItem[0])
+              return $aItem['price'];
+          }
+          break;
+        case 'btce':
+          return $aData['ticker']['last'];
+          break;
+        case 'cryptsy':
+          return @$aData['return']['markets'][$strCurrency]['lasttradeprice'];
+          break;
+        case 'cryptopia':
+          return @$aData['Data']['LastPrice'];
+          break;
+        case 'cryptorush':
+          return @$aData["$strCurrency/" . $this->config['price']['currency']]['last_trade'];
+          break;
+        case 'mintpal':
+          return @$aData['0']['last_price'];
+          break;
+        case 'c-cex':
+          return @$aData['ticker']['lastprice'];
+          break;
+        case 'bittrex':
+          return @$aData['result']['Last'];
+          break;
+        case 'coinmarketcap':
+          foreach ($aData as $aItem) {
+              return $aItem['price_usd'];
+          }
+          break;
+      }
+    } else {
+      $this->setErrorMessage("Got an invalid response from ticker API");
+      return false;
+    }
+    // Catchall, we have no data extractor for this API url
+    $this->setErrorMessage("Undefined API to getVrcBtcPrice() on URL " . $this->config['price']['btcurl']);
+    return false;
+  }
 }
 
 $tools = new Tools();

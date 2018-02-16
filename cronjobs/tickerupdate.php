@@ -70,6 +70,38 @@ if ($tickerupdate) {
     $message = 'Failed to fetch btcprice from API: ' . $tools->getCronError();
     $status = 'ERROR';
   }
+  $message = 'Updated latest ' . $config['currency'] . ' vrc price from ' . $config['price']['url'] . ' API';
+  $status = 'OK';
+  if ($vrcprice = $tools->getVrcPrice()) {
+    if (!$setting->setValue('vrcprice', $vrcprice)) {
+      $message = 'Unable to store new price value: ' . $setting->getCronError();
+      $status = 'ERROR';
+    }
+  } else {
+    $message = 'Failed to fetch vrc price from API: ' . $tools->getCronError();
+    $status = 'ERROR';
+  }
+  $message = 'Updated latest EUR price from ' . $config['price']['url'] . ' API';
+  $status = 'OK';
+  if ($vrceuroprice = $tools->getVrcEuroPrice()) {
+    if (!$setting->setValue('vrceuroprice', $vrceuroprice)) {
+      $message = 'Unable to store new vrc europrice value: ' . $setting->getCronError();
+      $status = 'ERROR';
+    }
+  } else {
+    $message = 'Failed to fetch vrc price from API: ' . $tools->getCronError();
+    $status = 'ERROR';
+  }
+  $message = 'Updated latest ' . $config['currency'] . ' vrc price from ' . $config['price']['btcurl'] . ' API';
+  if ($vrcbtcprice = $tools->getVrcBtcPrice()) {
+    if (!$setting->setValue('vrcbtcprice', $vrcbtcprice)) {
+      $message = 'Unable to store new vrcbtcprice value: ' . $setting->getCronError();
+      $status = 'ERROR';
+    }
+  } else {
+    $message = 'Failed to fetch vrcbtcprice from API: ' . $tools->getCronError();
+    $status = 'ERROR';
+  }
 } else {
   $message = 'Tickerupdate is disabled';
   $status = 'OK';
