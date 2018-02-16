@@ -111,6 +111,7 @@
                     </li>
                 </ul>
                 <!-- /#side-menu -->
+                <img id="madefrombeer" src="site_assets/bootstrap/images/made-from-beer.gif" />
             </div>
             <!-- /.sidebar-collapse -->
         </nav>

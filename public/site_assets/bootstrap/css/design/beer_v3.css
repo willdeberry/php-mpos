@@ -14,7 +14,9 @@ p {
 #logo {
     height: 50px;
     width: 50px;
+    margin-top: 3px;
     margin-right: 10px;
+    margin-bottom: 3px;
 }
 
 #page-wrapper {
@@ -61,6 +63,14 @@ p {
 
 .nav-pills > li > a {
     color: #555555;
+}
+
+#madefrombeer {
+    width: 200px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 a {
