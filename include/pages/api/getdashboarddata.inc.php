@@ -72,6 +72,7 @@ $dNetworkHashrateAdjusted = $dNetworkHashrate / 1000 * $dNetworkHashrateModifier
 
 // Coin price
 $aPrice = $setting->getValue('price');
+$aBtcPrice = $setting->getValue('btcprice');
 
 // Round progress
 $iEstShares = $statistics->getEstimatedShares($dDifficulty);
@@ -111,6 +112,7 @@ $data = array(
     'workers' => $worker->getCountAllActiveWorkers(), 'hashrate' => $dPoolHashrateAdjusted,
     'shares' => array( 'valid' => $aRoundShares['valid'], 'invalid' => $aRoundShares['invalid'], 'invalid_percent' => $dPoolInvalidPercent, 'estimated' => $iEstShares, 'progress' => $dEstPercent ),
     'price' => $aPrice,
+    'btcprice' => $aBtcPrice,
     'difficulty' => pow(2, $config['difficulty'] - 16),
     'target_bits' => $coin->getTargetBits()
   ),

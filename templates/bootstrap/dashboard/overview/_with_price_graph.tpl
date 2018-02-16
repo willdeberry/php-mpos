@@ -80,7 +80,7 @@
                   <div class="circle-tile-number text-faded up">
                     <span class="h6 overview" id="btc-price">{$GLOBAL.btcprice|default:"0"|number_format:"8"}</span>
                     <br>
-                    <span class="coin-price-line spark-25"></span>
+                    <span class="coin-btcprice-line spark-25"></span>
                   </div>
                 </div>
               </div>

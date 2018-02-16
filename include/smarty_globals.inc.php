@@ -86,6 +86,7 @@ $aGlobal = array(
     'disable_transactionsummary' => $setting->getValue('disable_transactionsummary'),
     'algorithm' => $config['algorithm'],
     'getbalancewithunconfirmed' => $config['getbalancewithunconfirmed'],
+    'getadminbalancewithunconfirmed' => $config['getadminbalancewithunconfirmed'],
     'target_bits' => $coin->getTargetBits(),
     'accounts' => $config['accounts'],
     'disable_invitations' => $setting->getValue('disable_invitations'),

@@ -50,7 +50,11 @@ $(document).ready(function(){
   var storedCoinPrice = [ null, null, null, null, null, null, null, null, null, null, null, null,
                           null, null, null, null, null, null, null, null, null, null, null, null,
                           null, null, null, null, null, null, null, null, null, null, null, null,
-                          {/literal}{$GLOBAL.price}{literal} ];
+                          {/literal}{$GLOBAL.price|round:"2"}{literal} ];
+  var storedCoinBtcPrice = [ null, null, null, null, null, null, null, null, null, null, null, null,
+                          null, null, null, null, null, null, null, null, null, null, null, null,
+                          null, null, null, null, null, null, null, null, null, null, null, null,
+                          {/literal}{$GLOBAL.btcprice}{literal} ];
   var lastBlock = 0;
 
   // Sparkline options applied to all graphs
@@ -74,6 +78,17 @@ $(document).ready(function(){
     chartRangeClip: true
   };
 
+
+  var sparklineLineOptionsBtc = {
+    height: '35',
+    chartRangeMin: {/literal}{$GLOBAL.btcprice}{literal} - 5,
+    chartRangeMax: {/literal}{$GLOBAL.btcprice}{literal} + 5,
+    composite: false,
+    lineColor: 'black',
+    fillColor: '#41fc41',
+    chartRangeClip: true
+  };
+
   // Draw our sparkline graphs with our current static content
   $('.personal-hashrate-bar').sparkline(storedPersonalHashrate, sparklineBarOptions);
   $('.personal-sharerate-bar').sparkline(storedPersonalSharerate, sparklineBarOptions);
@@ -82,6 +97,7 @@ $(document).ready(function(){
   $('.pool-workers-bar').sparkline(storedPoolWorkers, sparklineBarOptions);
 {/literal}{if $GLOBAL.config.price.enabled}{literal}
   $('.coin-price-line').sparkline(storedCoinPrice, sparklineLineOptions);
+  $('.coin-btcprice-line').sparkline(storedCoinBtcPrice, sparklineLineOptionsBtc);
 {/literal}{/if}{literal}
 
   function refreshInformation(data) {
@@ -97,7 +113,9 @@ $(document).ready(function(){
     storedPoolWorkers.shift();
     storedPoolWorkers.push(parseFloat(data.getdashboarddata.data.pool.workers).toFixed(8));
     storedCoinPrice.shift();
-    storedCoinPrice.push(parseFloat(data.getdashboarddata.data.pool.price).toFixed(8));
+    storedCoinPrice.push(parseFloat(data.getdashboarddata.data.pool.price).toFixed(2));
+    storedCoinBtcPrice.shift();
+    storedCoinBtcPrice.push(parseFloat(data.getdashboarddata.data.pool.btcprice).toFixed(8));
     // Redraw all bar graphs
     $('.personal-hashrate-bar').sparkline(storedPersonalHashrate, sparklineBarOptions);
     $('.personal-sharerate-bar').sparkline(storedPersonalSharerate, sparklineBarOptions);
@@ -106,13 +124,15 @@ $(document).ready(function(){
     $('.pool-workers-bar').sparkline(storedPoolWorkers, sparklineBarOptions);
   {/literal}{if $GLOBAL.config.price.enabled}{literal}
     $('.coin-price-line').sparkline(storedCoinPrice, sparklineLineOptions);
+    $('.coin-btcprice-line').sparkline(storedCoinBtcPrice, sparklineLineOptionsBtc);
   {/literal}{/if}{literal}
   }
 
   // Refresh other static numbers on the template
   function refreshStaticData(data) {
   {/literal}{if $GLOBAL.config.price.enabled}{literal}
-    $('#b-price').html((parseFloat(data.getdashboarddata.data.pool.price).toFixed(8)));
+    $('#btc-price').html((parseFloat(data.getdashboarddata.data.pool.btcprice).toFixed(8)));
+    $('#b-price').html((parseFloat(data.getdashboarddata.data.pool.price).toFixed(2)));
   {/literal}{/if}{literal}
     $('#b-poolworkers').html(number_format(data.getdashboarddata.data.pool.workers));
     $('#b-hashrate').html((number_format(data.getdashboarddata.data.personal.hashrate, 2)));
